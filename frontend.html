@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Books</h2>
+  <ul id="books"></ul>
+
+  <script>
+    fetch('http://localhost:3000/books')
+      .then(res => res.json())
+      .then(data => {
+        const ul = document.getElementById('books');
+        data.forEach(b => {
+          const li = document.createElement('li');
+          li.textContent = ${b.title} - ₹${b.price};
+          ul.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
